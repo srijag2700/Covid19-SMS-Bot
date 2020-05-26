@@ -36,7 +36,7 @@ def incoming_sms():
         if (result):
             state_cases = nd.state_recent_stats(state_name)
             msg_response = "There are currently " + str(state_cases) + " cases in " + state_name + ". \n\nIf you would like the count for a specific county, format your message as <state abbreviation> <county name>." + credit_msg
-            valid_resp = True
+            #valid_resp = True
             resp.message(msg_response)
         else:
             resp.message(state_name)
@@ -51,12 +51,12 @@ def incoming_sms():
             if (c_result):
                 state_cases = nd.state_recent_stats(state_name)
                 msg_response = "There are currently " + str(state_cases) + " cases in " + state_name + ", with " + str(county_cases) + " in " + county_name + " County." + credit_msg
-                valid_resp = True
+                #valid_resp = True
                 resp.message(msg_response)
             else:
                 state_cases = nd.state_recent_stats(state_name)
-                msg_response = "There are currently " + str(state_cases) + " cases in " + state_name + ". \n\n" + county_cases
-                valid_resp = True
+                msg_response = "There are currently " + str(state_cases) + " cases in " + state_name + ". \n\n" + county_cases + credit_msg
+                #valid_resp = True
                 resp.message(msg_response)
         else:
             resp.message(state_name)
@@ -66,8 +66,8 @@ def incoming_sms():
         resp.message("Your text could not be read. Try again and format it as just <state abbreviation>, or <state abbreviation> <county>.")
     
     # Provide credit if the input is valid
-    if (valid_resp):
-        resp.message("Data courtesy of the New York Times, as of " + nd.recent_counties + ".")
+    #if (valid_resp):
+        #resp.message("Data courtesy of the New York Times, as of " + nd.recent_counties + ".")
 
     return str(resp)
 
