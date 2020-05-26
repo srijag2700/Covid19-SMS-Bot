@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 from apscheduler.schedulers.background import BackgroundScheduler
 from importlib import reload
@@ -15,6 +15,10 @@ sched.start()
 
 # Start of Flask app
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('home.html')
 
 @app.route("/sms", methods=['GET', 'POST'])
 def incoming_sms():
