@@ -35,7 +35,7 @@ def incoming_sms():
         state_name, result = nd.validate_state(list_args[0].upper())
         if (result):
             state_cases = nd.state_recent_stats(state_name)
-            msg_response = "There are currently " + str(state_cases) + " cases in " + state_name + ". \n\nIf you would like the count for a specific county, format your message as <state abbreviation> <county name>." + credit_msg
+            msg_response = "There are currently " + str(state_cases) + " cases of COVID-19 in " + state_name + ". \n\nIf you would like the count for a specific county, format your message as <state abbreviation> <county name>." + credit_msg
             #valid_resp = True
             resp.message(msg_response)
         else:
@@ -50,12 +50,12 @@ def incoming_sms():
             county_cases, c_result = nd.validate_county(state_name, county_name)
             if (c_result):
                 state_cases = nd.state_recent_stats(state_name)
-                msg_response = "There are currently " + str(state_cases) + " cases in " + state_name + ", with " + str(county_cases) + " in " + county_name + " County." + credit_msg
+                msg_response = "There are currently " + str(state_cases) + " cases of COVID-19 in " + state_name + ", with " + str(county_cases) + " in " + county_name + " County." + credit_msg
                 #valid_resp = True
                 resp.message(msg_response)
             else:
                 state_cases = nd.state_recent_stats(state_name)
-                msg_response = "There are currently " + str(state_cases) + " cases in " + state_name + ". \n\n" + county_cases + credit_msg
+                msg_response = "There are currently " + str(state_cases) + " cases of COVID-19 in " + state_name + ". \n\n" + county_cases + credit_msg
                 #valid_resp = True
                 resp.message(msg_response)
         else:
